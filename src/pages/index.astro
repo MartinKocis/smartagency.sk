@@ -1,0 +1,240 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout>
+
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#09090b]/80 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="font-['Poppins'] font-black text-xl tracking-tight">
+        Smart<span class="text-indigo-400">Agency</span><span class="text-indigo-400">.</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+        <a href="#sluzby" class="hover:text-white transition-colors">Služby</a>
+        <a href="#process" class="hover:text-white transition-colors">Ako to funguje</a>
+        <a href="#kurzy" class="hover:text-white transition-colors">Kurzy</a>
+        <a href="#kontakt" class="hover:text-white transition-colors">Kontakt</a>
+      </div>
+      <a href="#kontakt" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
+        Začnime →
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative min-h-screen flex items-center overflow-hidden pt-16">
+    <div class="blob w-[500px] h-[500px] bg-indigo-600 top-[-100px] right-[-150px]" style="animation-duration:9s"></div>
+    <div class="blob w-[400px] h-[400px] bg-violet-700 bottom-[-100px] left-[-100px]" style="animation-duration:12s;animation-delay:3s"></div>
+    <div class="blob w-[300px] h-[300px] bg-purple-600 top-[40%] left-[40%]" style="animation-duration:15s;animation-delay:6s"></div>
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image:linear-gradient(white 1px,transparent 1px),linear-gradient(90deg,white 1px,transparent 1px);background-size:60px 60px"></div>
+
+    <div class="relative max-w-6xl mx-auto px-6 py-24 text-center">
+      <div class="inline-flex items-center gap-2 border border-indigo-500/30 bg-indigo-500/10 rounded-full px-4 py-1.5 text-xs text-indigo-300 font-medium mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse"></span>
+        Dostupný pre nových klientov · Slovensko & remote
+      </div>
+      <h1 class="font-['Poppins'] font-black text-5xl md:text-7xl leading-tight tracking-tight mb-6">
+        Digitálne platformy<br />
+        <span class="gradient-text">postavené s AI</span>
+      </h1>
+      <p class="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+        Staviam SaaS platformy, e-learningové systémy a webové aplikácie.<br />
+        Rýchlo, moderne a bez zbytočných nákladov.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 mb-20">
+        <a href="#kontakt" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-8 py-3.5 rounded-xl transition-all shadow-lg shadow-indigo-900/50">
+          Chcem platformu →
+        </a>
+        <a href="#kurzy" class="border border-white/15 text-zinc-300 hover:bg-white/5 hover:text-white font-medium px-8 py-3.5 rounded-xl transition-all">
+          Pozrieť kurzy
+        </a>
+      </div>
+      <div class="flex flex-wrap justify-center gap-12 border-t border-white/8 pt-12">
+        {[{n:'1 týždeň',l:'od idey k MVP'},{n:'AI-first',l:'vývoj a dizajn'},{n:'100%',l:'vlastný kód'}].map(({n,l})=>(
+          <div class="text-center">
+            <div class="font-['Poppins'] font-black text-3xl text-white">{n}</div>
+            <div class="text-zinc-500 text-sm mt-1">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="sluzby" class="py-24 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="text-xs font-bold text-indigo-400 tracking-widest uppercase mb-3 text-center">Čo robím</p>
+      <h2 class="font-['Poppins'] font-black text-3xl md:text-5xl text-center mb-16">Tri spôsoby ako ti pomôžem</h2>
+      <div class="grid md:grid-cols-3 gap-5">
+
+        <div class="bg-zinc-900/50 border border-white/8 rounded-3xl p-7 card-glow transition-all duration-300">
+          <div class="w-12 h-12 rounded-2xl bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
+          </div>
+          <div class="text-xs font-semibold text-indigo-400 uppercase tracking-wider mb-2">Development</div>
+          <h3 class="font-['Poppins'] font-bold text-xl text-white mb-3">Platformy na mieru</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-5">E-learningové systémy, SaaS aplikácie, booking platformy. Next.js + Supabase + moderný dizajn.</p>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            {['Databáza + autentifikácia','Admin & používateľský panel','Platobná brána (Stripe)','Deploy na Vercel'].map(i=>(
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0"></span>{i}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="bg-gradient-to-b from-indigo-900/40 to-violet-900/20 border border-indigo-500/30 rounded-3xl p-7 card-glow transition-all duration-300 relative">
+          <div class="absolute top-4 right-4 text-xs font-bold bg-indigo-600 text-white px-2.5 py-1 rounded-full">Populárne</div>
+          <div class="w-12 h-12 rounded-2xl bg-violet-600/20 border border-violet-500/30 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+          </div>
+          <div class="text-xs font-semibold text-violet-400 uppercase tracking-wider mb-2">Full-service</div>
+          <h3 class="font-['Poppins'] font-bold text-xl text-white mb-3">Platforma + spustenie</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-5">Kompletné riešenie — vývoj, dizajn, sociálne siete až po prvých klientov. Robím všetko.</p>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            {['Celý vývoj platformy','UI/UX dizajn (Canva Pro)','Sociálne siete — launch pack','Podpora 3 mesiace'].map(i=>(
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-violet-400 shrink-0"></span>{i}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="bg-zinc-900/50 border border-white/8 rounded-3xl p-7 card-glow transition-all duration-300">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+          </div>
+          <div class="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-2">Vzdelávanie</div>
+          <h3 class="font-['Poppins'] font-bold text-xl text-white mb-3">Kurzy & návody</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-5">Nauč sa stavať vlastné platformy s AI. Od nuly — bez predchádzajúcich skúseností.</p>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            {['Next.js + Supabase od základov','Dizajn bez dizajnéra','AI nástroje v praxi','Reálny projekt ako case study'].map(i=>(
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>{i}</li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="py-24 border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-6">
+      <p class="text-xs font-bold text-indigo-400 tracking-widest uppercase mb-3 text-center">Proces</p>
+      <h2 class="font-['Poppins'] font-black text-3xl md:text-5xl text-center mb-16">Od nápadu k platforme<br />za 7–14 dní</h2>
+      <div class="space-y-4">
+        {[
+          {n:'01',t:'Úvodný hovor (30 min)',d:'Prejdeme tvoj nápad a ciele. Zistím čo presne potrebuješ a navrhnem riešenie.'},
+          {n:'02',t:'Návrh & dizajn',d:'Pripravím UI dizajn. Uvidíš ako bude platforma vyzerať ešte pred vývojom.'},
+          {n:'03',t:'Vývoj s AI',d:'Staviam rýchlo s AI nástrojmi — Next.js, Supabase, moderný dizajn. Priebežne ti ukazujem pokrok.'},
+          {n:'04',t:'Spustenie & odovzdanie',d:'Deploy na Vercel, vlastná doména, všetky prístupy sú tvoje. Podpora po spustení.'},
+        ].map(({n,t,d})=>(
+          <div class="flex gap-6 bg-zinc-900/40 border border-white/6 rounded-2xl p-6 hover:border-indigo-500/30 transition-colors">
+            <div class="font-['Poppins'] font-black text-4xl text-indigo-600/40 shrink-0 w-14 text-right leading-none mt-1">{n}</div>
+            <div>
+              <h3 class="font-['Poppins'] font-bold text-lg text-white mb-1">{t}</h3>
+              <p class="text-zinc-400 text-sm leading-relaxed">{d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY -->
+  <section class="py-24 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="text-xs font-bold text-indigo-400 tracking-widest uppercase mb-3 text-center">Case study</p>
+      <h2 class="font-['Poppins'] font-black text-3xl md:text-5xl text-center mb-4">Reálna platforma.<br />Reálny výsledok.</h2>
+      <p class="text-zinc-400 text-center mb-16 max-w-xl mx-auto">Jazyková platforma pre lektorku angličtiny a španielčiny — od nuly po spustenie za menej ako 2 týždne.</p>
+      <div class="bg-gradient-to-br from-indigo-950/60 to-violet-950/40 border border-indigo-500/20 rounded-3xl p-8 md:p-12">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-3 py-1 text-xs text-zinc-400 mb-5">E-learning platforma · 2025</div>
+            <h3 class="font-['Poppins'] font-black text-2xl md:text-3xl text-white mb-4">Jazykové kurzy<br />pre lektorku Zuzku</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed mb-6">Admin panel, systém pozvánia, interaktívne kvízy, sledovanie pokroku. Kompletné riešenie od dizajnu po spustenie.</p>
+            <div class="grid grid-cols-2 gap-3">
+              {[{n:'2 týždne',l:'čas vývoja'},{n:'Next.js 16',l:'frontend'},{n:'Supabase',l:'backend + auth'},{n:'Vercel',l:'hosting'}].map(({n,l})=>(
+                <div class="bg-white/5 rounded-xl p-3">
+                  <div class="font-['Poppins'] font-bold text-white text-sm">{n}</div>
+                  <div class="text-zinc-500 text-xs">{l}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="space-y-3">
+            {['Admin panel s CRUD kurzov a lekcií','Systém pozvánia cez email (Resend)','Kvízový systém — MCQ, True/False, Fill-in','SVG progress ring — pokrok študenta','Supabase Auth + RLS bezpečnostné pravidlá','Moderný dizajn — dark hero, bento grid'].map(f=>(
+              <div class="flex items-center gap-3 text-sm text-zinc-300">
+                <div class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center shrink-0">
+                  <svg class="w-3 h-3 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                {f}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section id="kurzy" class="py-24 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="text-xs font-bold text-emerald-400 tracking-widest uppercase mb-3 text-center">Kurzy</p>
+      <h2 class="font-['Poppins'] font-black text-3xl md:text-5xl text-center mb-4">Nauč sa to sám</h2>
+      <p class="text-zinc-400 text-center mb-16 max-w-xl mx-auto">Praktické návody. Žiadna teória — len to čo reálne funguje.</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-zinc-900/50 border border-white/8 rounded-3xl overflow-hidden card-glow transition-all duration-300">
+          <div class="bg-gradient-to-br from-indigo-600 to-violet-700 p-8">
+            <div class="font-['Poppins'] font-black text-6xl text-white/10 mb-3">01</div>
+            <h3 class="font-['Poppins'] font-black text-2xl text-white">Postav si vlastnú<br />SaaS platformu</h3>
+          </div>
+          <div class="p-7">
+            <p class="text-zinc-400 text-sm leading-relaxed mb-6">Kompletný návod od nuly — databáza, autentifikácia, admin panel, platby. Rovnaký stack ako Zuzkinej platforma.</p>
+            <div class="flex items-center justify-between">
+              <div class="font-['Poppins'] font-black text-2xl text-zinc-500">Čoskoro</div>
+              <span class="bg-white/5 border border-white/10 text-zinc-500 text-sm px-4 py-2 rounded-xl">Zaregistrovať záujem</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-zinc-900/50 border border-white/8 rounded-3xl overflow-hidden card-glow transition-all duration-300">
+          <div class="bg-gradient-to-br from-emerald-600 to-teal-700 p-8">
+            <div class="font-['Poppins'] font-black text-6xl text-white/10 mb-3">02</div>
+            <h3 class="font-['Poppins'] font-black text-2xl text-white">AI nástroje<br />pre podnikateľov</h3>
+          </div>
+          <div class="p-7">
+            <p class="text-zinc-400 text-sm leading-relaxed mb-6">Reálne AI workflow — weby, platformy, obsah. Reálne projekty, reálne výsledky. Bez zbytočnej teórie.</p>
+            <div class="flex items-center justify-between">
+              <div class="font-['Poppins'] font-black text-2xl text-zinc-500">Čoskoro</div>
+              <span class="bg-white/5 border border-white/10 text-zinc-500 text-sm px-4 py-2 rounded-xl">Zaregistrovať záujem</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section id="kontakt" class="py-24 border-t border-white/5">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <div class="bg-gradient-to-br from-indigo-950/80 to-violet-950/60 border border-indigo-500/20 rounded-3xl p-12 relative overflow-hidden">
+        <div class="blob w-72 h-72 bg-indigo-600 top-[-60px] right-[-60px]" style="animation-duration:8s;opacity:0.12"></div>
+        <div class="relative">
+          <h2 class="font-['Poppins'] font-black text-3xl md:text-5xl text-white mb-4">Máš nápad?<br />Porozprávajme sa.</h2>
+          <p class="text-zinc-400 mb-8 leading-relaxed">Bezplatný 30-minútový hovor. Zistíme či a ako ti viem pomôcť.</p>
+          <a href="mailto:martin@smartagency.sk" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-indigo-900/50 text-lg">
+            Napísať mi →
+          </a>
+          <p class="text-zinc-600 text-xs mt-6">martin@smartagency.sk · Odpoviem do 24h</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 py-10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-600">
+      <span class="font-['Poppins'] font-black text-zinc-400">Smart<span class="text-indigo-500">Agency</span><span class="text-indigo-500">.</span></span>
+      <span>© {new Date().getFullYear()} · Slovensko · Postavené s AI</span>
+      <a href="mailto:martin@smartagency.sk" class="hover:text-zinc-400 transition-colors">martin@smartagency.sk</a>
+    </div>
+  </footer>
+
+</Layout>
