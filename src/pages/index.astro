@@ -10,13 +10,13 @@ import Layout from '../layouts/Layout.astro';
         Smart<span class="text-indigo-400">Agency</span><span class="text-indigo-400">.</span>
       </a>
       <div class="hidden md:flex items-center gap-7 text-sm text-zinc-400">
-        <a href="#sluzby" class="hover:text-white transition-colors duration-200 cursor-pointer">Služby</a>
-        <a href="#process" class="hover:text-white transition-colors duration-200 cursor-pointer">Proces</a>
-        <a href="#kurzy" class="hover:text-white transition-colors duration-200 cursor-pointer">Kurzy</a>
-        <a href="#kontakt" class="hover:text-white transition-colors duration-200 cursor-pointer">Kontakt</a>
+        <a href="#pre-koho" class="hover:text-white transition-colors duration-200 cursor-pointer">Pre koho</a>
+        <a href="#cena" class="hover:text-white transition-colors duration-200 cursor-pointer">Cena</a>
+        <a href="#ako-to-funguje" class="hover:text-white transition-colors duration-200 cursor-pointer">Ako to funguje</a>
+        <a href="#faq" class="hover:text-white transition-colors duration-200 cursor-pointer">Otázky</a>
       </div>
       <a href="#kontakt" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-all duration-200 cursor-pointer shadow-lg shadow-indigo-900/40">
-        Začnime →
+        Chcem to tiež →
       </a>
     </div>
   </nav>
@@ -25,15 +25,11 @@ import Layout from '../layouts/Layout.astro';
   <section class="relative min-h-screen flex items-center overflow-hidden pt-24">
     <div class="blob w-[600px] h-[600px] bg-indigo-600 top-[-150px] right-[-200px]" style="animation-duration:10s"></div>
     <div class="blob w-[450px] h-[450px] bg-violet-700 bottom-[-120px] left-[-120px]" style="animation-duration:13s;animation-delay:4s"></div>
-    <div class="blob w-[350px] h-[350px] bg-purple-500 top-[35%] left-[35%]" style="animation-duration:17s;animation-delay:7s"></div>
-
-    <!-- grid overlay -->
     <div class="absolute inset-0 opacity-[0.03]" style="background-image:linear-gradient(white 1px,transparent 1px),linear-gradient(90deg,white 1px,transparent 1px);background-size:72px 72px"></div>
 
-    <div class="relative max-w-6xl mx-auto px-6 py-32 text-center">
+    <div class="relative max-w-5xl mx-auto px-6 py-32 text-center">
 
-      <!-- badge -->
-      <div class="inline-flex items-center gap-2 border border-indigo-500/25 bg-indigo-500/8 rounded-full px-4 py-1.5 text-xs font-semibold text-indigo-300 mb-10 relative">
+      <div class="inline-flex items-center gap-2 border border-indigo-500/25 bg-indigo-500/8 rounded-full px-4 py-1.5 text-xs font-semibold text-indigo-300 mb-10">
         <span class="relative flex w-2 h-2">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-60"></span>
           <span class="relative inline-flex w-2 h-2 rounded-full bg-indigo-400"></span>
@@ -41,37 +37,37 @@ import Layout from '../layouts/Layout.astro';
         Dostupný pre nových klientov · Slovensko & remote
       </div>
 
-      <!-- EXAGGERATED heading -->
-      <h1 class="font-black leading-[0.92] tracking-[-0.04em] mb-8" style="font-size:clamp(3rem,8.5vw,7.5rem)">
-        Digitálne<br />
-        platformy<br />
-        <span class="gradient-text">s AI.</span>
+      <h1 class="font-black leading-[0.95] tracking-[-0.03em] mb-6" style="font-size:clamp(2.8rem,7.5vw,7rem)">
+        Chceš predávať<br />
+        <span class="gradient-text">online?</span><br />
+        Postavím ti to.
       </h1>
 
-      <p class="text-zinc-400 text-lg md:text-xl max-w-xl mx-auto mb-12 leading-relaxed" style="font-weight:400">
-        SaaS, e-learning, booking. Rýchlo, moderne.<br class="hidden md:block" />
-        Bez zbytočných nákladov.
+      <p class="text-zinc-300 text-xl md:text-2xl max-w-2xl mx-auto mb-4 leading-relaxed" style="font-weight:500">
+        Vlastná platforma na kurzy, rezervácie alebo členstvo.<br class="hidden md:block"/>
+        Bez programovania. Bez drahých agentúr.
+      </p>
+      <p class="text-zinc-500 text-base mb-12">
+        Spustíme za <strong class="text-zinc-300">7–14 dní</strong>. Platíš len za výsledok.
       </p>
 
-      <div class="flex flex-wrap justify-center gap-4 mb-24">
-        <a href="#kontakt" class="group bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-2xl transition-all duration-200 shadow-xl shadow-indigo-900/50 cursor-pointer text-lg">
-          Chcem platformu
+      <div class="flex flex-wrap justify-center gap-4 mb-16">
+        <a href="#kontakt" class="group bg-indigo-600 hover:bg-indigo-500 text-white font-black px-10 py-5 rounded-2xl transition-all duration-200 shadow-xl shadow-indigo-900/50 cursor-pointer text-xl">
+          Chcem vlastnú platformu
           <span class="inline-block transition-transform duration-200 group-hover:translate-x-1"> →</span>
         </a>
-        <a href="#kurzy" class="border border-white/12 text-zinc-300 hover:bg-white/5 hover:text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-200 cursor-pointer text-lg">
-          Pozrieť kurzy
-        </a>
       </div>
+      <p class="text-zinc-600 text-sm">Bezplatný úvodný hovor · Žiadne záväzky</p>
 
-      <!-- stats -->
-      <div class="inline-flex flex-wrap justify-center gap-0 border border-white/8 rounded-2xl overflow-hidden bg-white/[0.02]">
+      <!-- social proof bar -->
+      <div class="mt-16 flex flex-wrap justify-center gap-0 border border-white/8 rounded-2xl overflow-hidden bg-white/[0.02] max-w-2xl mx-auto">
         {[
-          {n:'7 dní',l:'od nápadu k MVP'},
-          {n:'AI-first',l:'vývoj aj dizajn'},
+          {n:'7 dní',l:'od nápadu k spusteniu'},
+          {n:'1 platforma',l:'už beží naplno'},
           {n:'100%',l:'váš vlastný kód'},
         ].map(({n,l}, i) => (
-          <div class={`px-10 py-5 text-center ${i < 2 ? 'border-r border-white/8' : ''}`}>
-            <div class="font-black text-2xl md:text-3xl text-white tracking-tight">{n}</div>
+          <div class={`flex-1 min-w-[140px] px-6 py-5 text-center ${i < 2 ? 'border-r border-white/8' : ''}`}>
+            <div class="font-black text-2xl text-white tracking-tight">{n}</div>
             <div class="text-zinc-500 text-xs mt-1 font-medium">{l}</div>
           </div>
         ))}
@@ -79,152 +75,210 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section id="sluzby" class="py-32 border-t border-white/5">
-    <div class="max-w-6xl mx-auto px-6">
+  <!-- PRE KOHO -->
+  <section id="pre-koho" class="py-32 border-t border-white/5">
+    <div class="max-w-5xl mx-auto px-6">
 
-      <div class="max-w-2xl mb-20">
-        <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-4">Čo robím</p>
-        <h2 class="font-black leading-[1.05] tracking-[-0.03em] mb-5" style="font-size:clamp(2.2rem,5vw,4.5rem)">
-          Tri spôsoby<br />ako ti pomôžem.
+      <div class="text-center mb-16">
+        <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-4">Pre koho to je</p>
+        <h2 class="font-black leading-[1.05] tracking-[-0.03em]" style="font-size:clamp(2rem,5vw,4rem)">
+          Spoznávaš sa?
         </h2>
-        <p class="text-zinc-400 text-lg leading-relaxed">Vyberám si projekty kde môžem urobiť skutočný rozdiel — nie šablóny, nie kompromisy.</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-5">
-
-        <!-- Development -->
-        <div class="group bg-zinc-900/40 border border-white/6 rounded-3xl p-8 card-glow flex flex-col">
-          <div class="w-12 h-12 rounded-2xl bg-indigo-600/15 border border-indigo-500/25 flex items-center justify-center mb-6 group-hover:bg-indigo-600/25 transition-colors duration-200">
-            <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
-            </svg>
+      <div class="grid md:grid-cols-3 gap-5 mb-12">
+        {[
+          {
+            icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/>`,
+            color: 'indigo',
+            who: 'Lektor / kouč',
+            what: 'Chceš predávať kurzy online, ale nevieš ako. Posielaš PDF-ka emailom a platby cez QR kód.',
+            want: 'Vlastná platforma kde si klient kúpi kurz, zaplatí a má prístup — automaticky.',
+          },
+          {
+            icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.701-.393 2.25-1.016a2.992 2.992 0 002.25 1.016 2.993 2.993 0 003.75.615m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z"/>`,
+            color: 'violet',
+            who: 'Podnikateľ s nápadom',
+            what: 'Máš skvelý nápad na aplikáciu alebo platformu, ale programovanie nevieš a agentúry chcú tisíce.',
+            want: 'MVP za rozumné peniaze, rýchlo. Aby si mohol otestovať či to ľudia chcú.',
+          },
+          {
+            icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 9v7.5m-9-6h.008v.008H12V13.5zm0 3h.008v.008H12v-.008zm0 3h.008v.008H12v-.008zm-3-6h.008v.008H9V13.5zm0 3h.008v.008H9v-.008zm0 3h.008v.008H9v-.008zm6-6h.008v.008h-.008V13.5zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/>`,
+            color: 'emerald',
+            who: 'Freelancer / expert',
+            what: 'Predávaš čas za peniaze. Chceš pasívny príjem ale nevieš kde začať s digitálnymi produktmi.',
+            want: 'Platforma na predaj tvojich znalostí — kurzy, členstvo, konzultácie online.',
+          },
+        ].map(({icon, color, who, what, want}) => (
+          <div class={`bg-zinc-900/40 border border-white/6 rounded-3xl p-8 hover:border-${color}-500/30 transition-all duration-200`}>
+            <div class={`w-12 h-12 rounded-2xl bg-${color}-600/15 border border-${color}-500/25 flex items-center justify-center mb-5`}>
+              <svg class={`w-6 h-6 text-${color}-400`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" set:html={icon}></svg>
+            </div>
+            <div class={`text-[10px] font-black text-${color}-400 uppercase tracking-[0.18em] mb-2`}>{who}</div>
+            <p class="text-zinc-400 text-sm leading-relaxed mb-4">"{what}"</p>
+            <div class="border-t border-white/6 pt-4">
+              <p class="text-zinc-300 text-sm font-semibold leading-relaxed">
+                <span class={`text-${color}-400`}>→ </span>{want}
+              </p>
+            </div>
           </div>
-          <div class="text-[10px] font-black text-indigo-400 uppercase tracking-[0.18em] mb-3">Development</div>
-          <h3 class="font-black text-2xl tracking-tight text-white mb-3 leading-tight">Platformy<br />na mieru</h3>
-          <p class="text-zinc-400 text-sm leading-relaxed mb-6 flex-1">E-learningové systémy, SaaS aplikácie, booking platformy. Next.js + Supabase + moderný dizajn.</p>
-          <ul class="space-y-2.5 text-sm text-zinc-400 border-t border-white/6 pt-6">
-            {['Databáza + autentifikácia','Admin & používateľský panel','Platobná brána (Stripe)','Deploy na Vercel'].map(i => (
-              <li class="flex items-center gap-2.5">
-                <svg class="w-4 h-4 text-indigo-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                {i}
-              </li>
-            ))}
-          </ul>
-        </div>
+        ))}
+      </div>
 
-        <!-- Full-service — POPULAR -->
-        <div class="group bg-gradient-to-b from-indigo-900/50 to-violet-900/30 border border-indigo-500/25 rounded-3xl p-8 card-glow flex flex-col relative">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-[10px] font-black px-3 py-1 rounded-full tracking-wider uppercase shadow-lg shadow-indigo-900/50">
-            Populárne
-          </div>
-          <div class="w-12 h-12 rounded-2xl bg-violet-600/15 border border-violet-500/25 flex items-center justify-center mb-6 group-hover:bg-violet-600/25 transition-colors duration-200">
-            <svg class="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
-            </svg>
-          </div>
-          <div class="text-[10px] font-black text-violet-400 uppercase tracking-[0.18em] mb-3">Full-service</div>
-          <h3 class="font-black text-2xl tracking-tight text-white mb-3 leading-tight">Platforma<br />+ spustenie</h3>
-          <p class="text-zinc-400 text-sm leading-relaxed mb-6 flex-1">Kompletné riešenie — vývoj, dizajn, sociálne siete až po prvých klientov. Robím všetko.</p>
-          <ul class="space-y-2.5 text-sm text-zinc-400 border-t border-white/10 pt-6">
-            {['Celý vývoj platformy','UI/UX dizajn (Canva Pro)','Sociálne siete — launch pack','Podpora 3 mesiace'].map(i => (
-              <li class="flex items-center gap-2.5">
-                <svg class="w-4 h-4 text-violet-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                {i}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <!-- Courses -->
-        <div class="group bg-zinc-900/40 border border-white/6 rounded-3xl p-8 card-glow flex flex-col">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-600/15 border border-emerald-500/25 flex items-center justify-center mb-6 group-hover:bg-emerald-600/25 transition-colors duration-200">
-            <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/>
-            </svg>
-          </div>
-          <div class="text-[10px] font-black text-emerald-400 uppercase tracking-[0.18em] mb-3">Vzdelávanie</div>
-          <h3 class="font-black text-2xl tracking-tight text-white mb-3 leading-tight">Kurzy<br />& návody</h3>
-          <p class="text-zinc-400 text-sm leading-relaxed mb-6 flex-1">Nauč sa stavať vlastné platformy s AI. Od nuly — bez predchádzajúcich skúseností.</p>
-          <ul class="space-y-2.5 text-sm text-zinc-400 border-t border-white/6 pt-6">
-            {['Next.js + Supabase od základov','Dizajn bez dizajnéra','AI nástroje v praxi','Reálny projekt ako case study'].map(i => (
-              <li class="flex items-center gap-2.5">
-                <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                {i}
-              </li>
-            ))}
-          </ul>
-        </div>
-
+      <div class="text-center">
+        <a href="#kontakt" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-2xl transition-all duration-200 cursor-pointer text-lg shadow-lg shadow-indigo-900/40">
+          Áno, toto je pre mňa →
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- PROCESS — Scroll storytelling chapters -->
-  <section id="process" class="py-32 border-t border-white/5 overflow-hidden">
-    <div class="max-w-6xl mx-auto px-6">
+  <!-- ČO DOSTANEM — PRICING OVERVIEW -->
+  <section id="cena" class="py-32 border-t border-white/5">
+    <div class="max-w-5xl mx-auto px-6">
 
-      <div class="max-w-2xl mb-20">
+      <div class="text-center mb-16">
+        <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-4">Čo dostanem</p>
+        <h2 class="font-black leading-[1.05] tracking-[-0.03em] mb-5" style="font-size:clamp(2rem,5vw,4rem)">
+          Hotová platforma.<br />Nie len webstránka.
+        </h2>
+        <p class="text-zinc-400 text-lg max-w-xl mx-auto">Webstránka ti predá. Platforma ti zarobí. Rozdiel je obrovský.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-12">
+
+        <!-- Basic -->
+        <div class="bg-zinc-900/40 border border-white/6 rounded-3xl p-8 card-glow flex flex-col">
+          <div class="text-[10px] font-black text-zinc-400 uppercase tracking-[0.18em] mb-2">Základ</div>
+          <h3 class="font-black text-2xl text-white mb-1 tracking-tight">Platforma na kľúč</h3>
+          <p class="text-zinc-400 text-sm mb-6">Pre lektorov, koučov a expertov čo chcú predávať online.</p>
+          <ul class="space-y-3 text-sm text-zinc-300 mb-8 flex-1">
+            {[
+              'Prihlasovanie zákazníkov (email + heslo)',
+              'Predaj kurzov alebo lekcií online',
+              'Zákazník zaplatí → okamžitý prístup',
+              'Tvoj admin panel — pridáš kurz za 2 min',
+              'Funguje na mobile aj počítači',
+              'Vlastná doména (napr. kurzy.tvoje-meno.sk)',
+              'Hosting zadarmo (platíš len doménu ~10€/rok)',
+            ].map(i => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                {i}
+              </li>
+            ))}
+          </ul>
+          <a href="#kontakt" class="block text-center bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-4 rounded-2xl transition-all duration-200 cursor-pointer">
+            Chcem toto →
+          </a>
+        </div>
+
+        <!-- Full service -->
+        <div class="bg-gradient-to-b from-indigo-900/50 to-violet-900/30 border border-indigo-500/25 rounded-3xl p-8 card-glow flex flex-col relative">
+          <div class="absolute -top-3 left-8 bg-indigo-600 text-white text-[10px] font-black px-3 py-1 rounded-full tracking-wider uppercase shadow-lg shadow-indigo-900/50">
+            Odporúčam
+          </div>
+          <div class="text-[10px] font-black text-indigo-300 uppercase tracking-[0.18em] mb-2">Komplet balík</div>
+          <h3 class="font-black text-2xl text-white mb-1 tracking-tight">Platforma + spustenie</h3>
+          <p class="text-zinc-400 text-sm mb-6">Pre tých čo chcú výsledky, nie len technológiu.</p>
+          <ul class="space-y-3 text-sm text-zinc-300 mb-8 flex-1">
+            {[
+              'Všetko zo základného balíka',
+              'Platobná brána — zákazník zaplatí kartou',
+              'Automatický email po kúpe kurzu',
+              'Dizajn podľa tvojho brangu (logo, farby)',
+              'Kvízy a testy pre študentov',
+              'Štatistiky — koľko ľudí, koľko zarobíš',
+              'Launch pack — prvé posty na sociálne siete',
+              'Podpora 3 mesiace po spustení',
+            ].map(i => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-violet-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                {i}
+              </li>
+            ))}
+          </ul>
+          <a href="#kontakt" class="block text-center bg-white text-zinc-900 hover:bg-zinc-100 font-black py-4 rounded-2xl transition-all duration-200 cursor-pointer">
+            Chcem komplet balík →
+          </a>
+        </div>
+
+      </div>
+
+      <p class="text-center text-zinc-500 text-sm">
+        Presná cena záleží od toho čo potrebuješ. Prvý hovor je vždy bezplatný.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- AKO TO FUNGUJE -->
+  <section id="ako-to-funguje" class="py-32 border-t border-white/5 overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6">
+
+      <div class="text-center mb-16">
         <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-4">Ako to funguje</p>
-        <h2 class="font-black leading-[1.05] tracking-[-0.03em]" style="font-size:clamp(2.2rem,5vw,4.5rem)">
-          Od nápadu<br />k platforme<br />
-          <span class="gradient-text">za 7–14 dní.</span>
+        <h2 class="font-black leading-[1.05] tracking-[-0.03em]" style="font-size:clamp(2rem,5vw,4rem)">
+          Od hovoru<br />po spustenú platformu.
         </h2>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-4">
+      <div class="grid md:grid-cols-2 gap-4 mb-12">
         {[
-          {n:'01',t:'Úvodný hovor',d:'30 minút. Prejdeme tvoj nápad a ciele. Žiadne záväzky — len otvorený rozhovor o tom, čo potrebuješ.',c:'indigo'},
-          {n:'02',t:'Návrh & dizajn',d:'Pripravím UI dizajn a architektúru. Uvidíš ako bude platforma vyzerať ešte pred tým, ako napíšem prvý riadok kódu.',c:'violet'},
-          {n:'03',t:'Vývoj s AI',d:'Staviam rýchlo s AI nástrojmi — Next.js, Supabase, moderný dizajn. Priebežne ti ukazujem pokrok.',c:'purple'},
-          {n:'04',t:'Odovzdanie & podpora',d:'Deploy na Vercel, vlastná doména, všetky prístupy sú tvoje. Podpora a zaškolenie po spustení.',c:'emerald'},
+          {n:'01',t:'Zavoláme si (zadarmo)',d:'30 minút. Povieš mi čo chceš predávať a komu. Ja ti poviem čo presne postavím a za koľko. Žiadne záväzky.', c:'indigo'},
+          {n:'02',t:'Ukážem ti ako to bude vyzerať',d:'Pred tým ako začnem kódovať, ukážem ti dizajn. Schváliš to, navrhneš zmeny — až potom idem ďalej.', c:'violet'},
+          {n:'03',t:'Staviam — ty čakáš 7–14 dní',d:'Budujem celú platformu. Priebežne ti ukazujem pokrok. Nemusíš rozumieť technológii — len povieš čo sa ti páči.', c:'purple'},
+          {n:'04',t:'Spustíme a zaškolíme ťa',d:'Platforma ide live. Ukážem ti ako pridať kurz, pozrieť platby, komunikovať so zákazníkmi. Zvládneš to sama.', c:'emerald'},
         ].map(({n,t,d,c}) => (
-          <div class={`group relative bg-zinc-900/40 border border-white/6 rounded-3xl p-8 hover:border-${c}-500/30 transition-all duration-200 cursor-default overflow-hidden`}>
-            <div class={`absolute -top-4 -right-4 font-black text-[9rem] text-${c}-900/30 leading-none select-none`} aria-hidden="true">{n}</div>
+          <div class={`group relative bg-zinc-900/40 border border-white/6 rounded-3xl p-8 hover:border-${c}-500/30 transition-all duration-200 overflow-hidden`}>
+            <div class={`absolute -top-6 -right-4 font-black text-[8rem] text-${c}-900/40 leading-none select-none`} aria-hidden="true">{n}</div>
             <div class="relative">
               <div class={`text-[10px] font-black text-${c}-400 uppercase tracking-[0.18em] mb-3`}>Krok {n}</div>
-              <h3 class="font-black text-2xl tracking-tight text-white mb-3">{t}</h3>
+              <h3 class="font-black text-xl tracking-tight text-white mb-3">{t}</h3>
               <p class="text-zinc-400 text-sm leading-relaxed">{d}</p>
             </div>
           </div>
         ))}
+      </div>
+
+      <div class="text-center">
+        <a href="#kontakt" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-2xl transition-all duration-200 cursor-pointer text-lg shadow-lg shadow-indigo-900/40">
+          Začnime prvým hovorom →
+        </a>
       </div>
     </div>
   </section>
 
   <!-- CASE STUDY -->
   <section class="py-32 border-t border-white/5">
-    <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-5xl mx-auto px-6">
 
-      <div class="max-w-2xl mb-16">
-        <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-4">Case study</p>
-        <h2 class="font-black leading-[1.05] tracking-[-0.03em] mb-5" style="font-size:clamp(2.2rem,5vw,4.5rem)">
-          Reálna platforma.<br />
-          <span class="gradient-text">Reálny výsledok.</span>
+      <div class="text-center mb-16">
+        <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-4">Reálny príklad</p>
+        <h2 class="font-black leading-[1.05] tracking-[-0.03em]" style="font-size:clamp(2rem,5vw,4rem)">
+          Toto som<br />
+          <span class="gradient-text">už postavil.</span>
         </h2>
-        <p class="text-zinc-400 text-lg leading-relaxed">Jazyková platforma pre lektorku angličtiny a španielčiny — od nuly po spustenie za menej ako 2 týždne.</p>
       </div>
 
       <div class="bg-gradient-to-br from-indigo-950/70 to-violet-950/50 border border-indigo-500/20 rounded-3xl p-8 md:p-12 relative overflow-hidden">
-        <div class="blob w-96 h-96 bg-indigo-700 top-[-80px] right-[-80px]" style="animation-duration:11s;opacity:0.12"></div>
+        <div class="blob w-80 h-80 bg-indigo-700 top-[-60px] right-[-60px]" style="animation-duration:11s;opacity:0.1"></div>
         <div class="relative grid md:grid-cols-2 gap-10 items-start">
-
           <div>
             <div class="inline-flex items-center gap-2 bg-white/6 border border-white/10 rounded-full px-3 py-1 text-xs text-zinc-400 font-medium mb-6">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              E-learning platforma · 2025
+              Spustené · 2025
             </div>
-            <h3 class="font-black text-3xl md:text-4xl tracking-tight text-white mb-4 leading-tight">Jazykové kurzy<br />pre lektorku</h3>
-            <p class="text-zinc-400 text-sm leading-relaxed mb-8">Admin panel, systém pozvánia, interaktívne kvízy, sledovanie pokroku. Kompletné riešenie od dizajnu po spustenie.</p>
-
+            <h3 class="font-black text-3xl tracking-tight text-white mb-4 leading-tight">Platforma pre lektorku jazykov</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+              Lektorka angličtiny a španielčiny chcela predávať kurzy online. Predtým posielala materiály emailom a platby riešila ručne. Dnes má vlastnú platformu kde zákazníci platia kartou a majú okamžitý prístup k lekciám.
+            </p>
             <div class="grid grid-cols-2 gap-3">
-              {[{n:'2 týždne',l:'čas vývoja'},{n:'Next.js 16',l:'frontend'},{n:'Supabase',l:'backend + auth'},{n:'Vercel',l:'hosting'}].map(({n,l}) => (
+              {[{n:'2 týždne',l:'od nápadu po spustenie'},{n:'0 €',l:'mesačné náklady na hosting'},{n:'100%',l:'jej vlastná platforma'},{n:'Stripe',l:'platby kartou v pár krokoch'}].map(({n,l}) => (
                 <div class="bg-white/5 border border-white/8 rounded-2xl p-4">
                   <div class="font-black text-white text-sm tracking-tight">{n}</div>
                   <div class="text-zinc-500 text-xs mt-0.5 font-medium">{l}</div>
@@ -234,15 +288,15 @@ import Layout from '../layouts/Layout.astro';
           </div>
 
           <div class="space-y-3">
-            <p class="text-xs font-black text-zinc-500 uppercase tracking-[0.15em] mb-5">Čo sme postavili</p>
+            <p class="text-xs font-black text-zinc-500 uppercase tracking-[0.15em] mb-4">Čo dostala</p>
             {[
-              'Admin panel s CRUD kurzov a lekcií',
-              'Systém pozvánia cez email (Resend)',
-              'Kvízový systém — MCQ, True/False, Fill-in',
-              'SVG progress ring — pokrok študenta',
-              'Supabase Auth + RLS bezpečnostné pravidlá',
-              'Moderný dark dizajn — bento grid layout',
-              'Responzívny dizajn pre mobil aj desktop',
+              'Zákazník sa zaregistruje sám — bez nej',
+              'Zaplatí kartou — peniaze idú priamo jej',
+              'Okamžitý prístup k lekciám po platbe',
+              'Kvízy a testy — vidí pokrok študenta',
+              'Ona pridáva kurzy sama, za 2 minúty',
+              'Funguje na mobile aj počítači',
+              'Vlastná doména a dizajn podľa nej',
             ].map(f => (
               <div class="flex items-center gap-3 text-sm text-zinc-300 bg-white/[0.03] border border-white/6 rounded-xl px-4 py-3">
                 <div class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center shrink-0">
@@ -259,83 +313,99 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- COURSES -->
-  <section id="kurzy" class="py-32 border-t border-white/5">
-    <div class="max-w-6xl mx-auto px-6">
+  <!-- FAQ -->
+  <section id="faq" class="py-32 border-t border-white/5">
+    <div class="max-w-3xl mx-auto px-6">
 
-      <div class="max-w-2xl mb-20">
-        <p class="text-xs font-black text-emerald-400 tracking-[0.2em] uppercase mb-4">Kurzy</p>
-        <h2 class="font-black leading-[1.05] tracking-[-0.03em] mb-5" style="font-size:clamp(2.2rem,5vw,4.5rem)">
-          Nauč sa to sám.
+      <div class="text-center mb-16">
+        <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-4">Časté otázky</p>
+        <h2 class="font-black leading-[1.05] tracking-[-0.03em]" style="font-size:clamp(2rem,5vw,4rem)">
+          Čo ťa zaujíma?
         </h2>
-        <p class="text-zinc-400 text-lg leading-relaxed">Praktické návody. Žiadna teória — len to, čo reálne funguje v praxi.</p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="space-y-4">
+        {[
+          {
+            q: 'Koľko to stojí?',
+            a: 'Záleží od toho čo potrebuješ. Základná platforma začína od niekoľkých stoviek eur. Prvý hovor je zadarmo — povieš mi čo chceš a ja ti dám presnú cenu bez skrytých poplatkov.',
+          },
+          {
+            q: 'Musím rozumieť programovaniu?',
+            a: 'Vôbec nie. Ty mi povieš čo chceš predávať, ja postavím všetko technické. Po spustení ti ukážem ako pridáš kurzy a pozrieš si platby — zvládne to každý.',
+          },
+          {
+            q: 'Koľko to trvá?',
+            a: 'Základná platforma je hotová za 7–14 dní od prvého hovoru. Kompletný balík s dizajnom a platbami trvá 2–3 týždne.',
+          },
+          {
+            q: 'Čo ak to nechcem neskôr používať?',
+            a: 'Všetok kód je tvoj. Nie si viazaný na mňa — môžeš to dať komukoľvek inému alebo zastaviť kedykoľvek. Žiadne mesačné poplatky za platformu.',
+          },
+          {
+            q: 'Ako bude zákazník platiť?',
+            a: 'Cez Stripe — kartou priamo na tvojej platforme. Peniaze ti chodia na účet (slovenský alebo iný). Stripe si berie malé percento za každú transakciu, iné poplatky nie sú.',
+          },
+          {
+            q: 'Môžem to vidieť ešte pred tým ako zaplatím?',
+            a: 'Áno. Najprv ti ukážem dizajn. Schváliš to. Potom staviam. Nič neplatíš dopredu — dohodnem sa na etapách.',
+          },
+        ].map(({q, a}) => (
+          <details class="group bg-zinc-900/40 border border-white/6 rounded-2xl overflow-hidden cursor-pointer hover:border-indigo-500/25 transition-colors duration-200">
+            <summary class="flex items-center justify-between p-6 font-bold text-white text-lg list-none cursor-pointer">
+              {q}
+              <svg class="w-5 h-5 text-zinc-500 shrink-0 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-zinc-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+              {a}
+            </div>
+          </details>
+        ))}
+      </div>
 
-        <div class="group bg-zinc-900/40 border border-white/6 rounded-3xl overflow-hidden card-glow flex flex-col">
-          <div class="bg-gradient-to-br from-indigo-600 to-violet-700 p-10 relative overflow-hidden">
-            <div class="absolute -bottom-4 -right-4 font-black text-[8rem] text-white/8 leading-none select-none" aria-hidden="true">01</div>
-            <div class="relative">
-              <div class="text-[10px] font-black text-indigo-200 uppercase tracking-[0.18em] mb-4">Kurz 01</div>
-              <h3 class="font-black text-2xl md:text-3xl text-white leading-tight tracking-tight">Postav si vlastnú<br />SaaS platformu</h3>
-            </div>
-          </div>
-          <div class="p-8 flex flex-col flex-1">
-            <p class="text-zinc-400 text-sm leading-relaxed mb-6 flex-1">Kompletný návod od nuly — databáza, autentifikácia, admin panel, platby. Rovnaký stack ako pri reálnych projektoch.</p>
-            <div class="flex items-center justify-between">
-              <div class="font-black text-2xl text-zinc-600 tracking-tight">Čoskoro</div>
-              <button class="bg-white/6 hover:bg-white/10 border border-white/10 text-zinc-300 hover:text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all duration-200 cursor-pointer">
-                Zaregistrovať záujem
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="group bg-zinc-900/40 border border-white/6 rounded-3xl overflow-hidden card-glow flex flex-col">
-          <div class="bg-gradient-to-br from-emerald-600 to-teal-700 p-10 relative overflow-hidden">
-            <div class="absolute -bottom-4 -right-4 font-black text-[8rem] text-white/8 leading-none select-none" aria-hidden="true">02</div>
-            <div class="relative">
-              <div class="text-[10px] font-black text-emerald-200 uppercase tracking-[0.18em] mb-4">Kurz 02</div>
-              <h3 class="font-black text-2xl md:text-3xl text-white leading-tight tracking-tight">AI nástroje<br />pre podnikateľov</h3>
-            </div>
-          </div>
-          <div class="p-8 flex flex-col flex-1">
-            <p class="text-zinc-400 text-sm leading-relaxed mb-6 flex-1">Reálne AI workflow — weby, platformy, obsah, automatizácia. Reálne projekty, reálne výsledky. Bez zbytočnej teórie.</p>
-            <div class="flex items-center justify-between">
-              <div class="font-black text-2xl text-zinc-600 tracking-tight">Čoskoro</div>
-              <button class="bg-white/6 hover:bg-white/10 border border-white/10 text-zinc-300 hover:text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all duration-200 cursor-pointer">
-                Zaregistrovať záujem
-              </button>
-            </div>
-          </div>
-        </div>
-
+      <div class="text-center mt-12">
+        <p class="text-zinc-500 mb-4">Máš inú otázku?</p>
+        <a href="#kontakt" class="inline-flex items-center gap-2 border border-white/15 text-zinc-300 hover:bg-white/5 hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 cursor-pointer">
+          Napíš mi priamo →
+        </a>
       </div>
     </div>
   </section>
 
   <!-- CONTACT CTA -->
   <section id="kontakt" class="py-32 border-t border-white/5">
-    <div class="max-w-5xl mx-auto px-6">
+    <div class="max-w-4xl mx-auto px-6">
       <div class="relative bg-gradient-to-br from-indigo-950/90 to-violet-950/70 border border-indigo-500/20 rounded-3xl p-12 md:p-20 text-center overflow-hidden">
-        <div class="blob w-[400px] h-[400px] bg-indigo-600 top-[-100px] right-[-100px]" style="animation-duration:9s;opacity:0.1"></div>
-        <div class="blob w-[300px] h-[300px] bg-violet-700 bottom-[-80px] left-[-60px]" style="animation-duration:12s;animation-delay:3s;opacity:0.08"></div>
+        <div class="blob w-[350px] h-[350px] bg-indigo-600 top-[-80px] right-[-80px]" style="animation-duration:9s;opacity:0.1"></div>
+        <div class="blob w-[250px] h-[250px] bg-violet-700 bottom-[-60px] left-[-40px]" style="animation-duration:12s;animation-delay:3s;opacity:0.08"></div>
         <div class="relative">
-          <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-6">Porozprávajme sa</p>
-          <h2 class="font-black leading-[1.0] tracking-[-0.04em] text-white mb-6" style="font-size:clamp(2.5rem,6vw,6rem)">
-            Máš nápad?
+          <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-6">Prvý krok je zadarmo</p>
+          <h2 class="font-black leading-[1.0] tracking-[-0.04em] text-white mb-4" style="font-size:clamp(2.5rem,6vw,5.5rem)">
+            Porozprávajme sa.
           </h2>
-          <p class="text-zinc-400 text-lg md:text-xl mb-10 max-w-lg mx-auto leading-relaxed">
-            Bezplatný 30-minútový hovor. Zistíme či a ako ti viem pomôcť. Žiadne záväzky.
+          <p class="text-zinc-400 text-lg md:text-xl mb-3 max-w-lg mx-auto leading-relaxed">
+            30 minút. Zistíme čo presne potrebuješ a čo to bude stáť.
           </p>
-          <a href="mailto:martin@smartagency.sk" class="inline-flex items-center gap-3 bg-white text-zinc-900 font-black px-10 py-5 rounded-2xl transition-all duration-200 hover:bg-zinc-100 cursor-pointer text-lg shadow-2xl shadow-indigo-900/50">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-            </svg>
-            Napísať mi
-          </a>
-          <p class="text-zinc-600 text-sm mt-6 font-medium">martin@smartagency.sk · Odpoviem do 24h</p>
+          <p class="text-zinc-500 text-sm mb-10">Žiadne záväzky. Žiadny predaj. Len úprimný rozhovor.</p>
+
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="mailto:martin.kocis96@gmail.com" class="inline-flex items-center gap-3 bg-white text-zinc-900 hover:bg-zinc-100 font-black px-10 py-5 rounded-2xl transition-all duration-200 cursor-pointer text-lg shadow-2xl shadow-indigo-900/50">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              Napísať email
+            </a>
+            <a href="https://wa.me/421900000000" class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white font-black px-10 py-5 rounded-2xl transition-all duration-200 cursor-pointer text-lg">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              WhatsApp
+            </a>
+          </div>
+
+          <p class="text-zinc-600 text-sm mt-8 font-medium">martin.kocis96@gmail.com · Odpoviem do 24h</p>
         </div>
       </div>
     </div>
@@ -345,8 +415,8 @@ import Layout from '../layouts/Layout.astro';
   <footer class="border-t border-white/5 py-10">
     <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-600">
       <span class="font-black text-zinc-400">Smart<span class="text-indigo-500">Agency</span><span class="text-indigo-500">.</span></span>
-      <span>© {new Date().getFullYear()} · Slovensko · Postavené s AI</span>
-      <a href="mailto:martin@smartagency.sk" class="hover:text-zinc-400 transition-colors duration-200 cursor-pointer">martin@smartagency.sk</a>
+      <span>© {new Date().getFullYear()} · Martin Kocis · Slovensko</span>
+      <a href="mailto:martin.kocis96@gmail.com" class="hover:text-zinc-400 transition-colors duration-200 cursor-pointer">martin.kocis96@gmail.com</a>
     </div>
   </footer>
 
