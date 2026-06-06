@@ -13,6 +13,7 @@ import Layout from '../layouts/Layout.astro';
         <a href="#pre-koho" class="hover:text-white transition-colors duration-200 cursor-pointer">Pre koho</a>
         <a href="#cena" class="hover:text-white transition-colors duration-200 cursor-pointer">Cena</a>
         <a href="#ako-to-funguje" class="hover:text-white transition-colors duration-200 cursor-pointer">Ako to funguje</a>
+        <a href="#referencie" class="hover:text-white transition-colors duration-200 cursor-pointer">Referencie</a>
         <a href="#faq" class="hover:text-white transition-colors duration-200 cursor-pointer">Otázky</a>
       </div>
       <a href="#kontakt" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-all duration-200 cursor-pointer shadow-lg shadow-indigo-900/40">
@@ -309,6 +310,43 @@ import Layout from '../layouts/Layout.astro';
             ))}
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENCIE -->
+  <section id="referencie" class="py-32 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <div class="text-center mb-16">
+        <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-4">Referencie</p>
+        <h2 class="font-black leading-[1.05] tracking-[-0.03em] mb-5" style="font-size:clamp(2rem,5vw,4rem)">
+          Weby, čo už <span class="gradient-text">bežia.</span>
+        </h2>
+        <p class="text-zinc-400 text-lg max-w-xl mx-auto">Skutočné stránky pre skutočných klientov. Klikni a pozri si ich naživo.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {[
+          {img:'/portfolio/kadernictvomi.png', name:'Capillus kaderníctvo', cat:'Kaderníctvo · Michalovce', url:'https://kadernictvomi.sk'},
+          {img:'/portfolio/rozbitymobil.png', name:'Rozbitý mobil', cat:'Servis elektroniky · Michalovce', url:'https://rozbitymobil.sk'},
+          {img:'/portfolio/lekaren.png', name:'Medical Center Pharmacy', cat:'Lekáreň · Sečovce', url:'https://lekaren-secovce.vercel.app'},
+        ].map(({img, name, cat, url}) => (
+          <a href={url} target="_blank" rel="noopener" class="group bg-zinc-900/40 border border-white/6 rounded-3xl overflow-hidden hover:border-indigo-500/40 transition-all duration-200 cursor-pointer flex flex-col">
+            <div class="relative overflow-hidden aspect-[16/10] border-b border-white/6">
+              <img src={img} alt={`Náhľad webu ${name}`} loading="lazy" width="1280" height="800" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.04]" />
+            </div>
+            <div class="p-6 flex items-center justify-between gap-4">
+              <div>
+                <div class="text-[10px] font-black text-indigo-400 uppercase tracking-[0.15em] mb-1.5">{cat}</div>
+                <h3 class="font-black text-lg text-white tracking-tight">{name}</h3>
+              </div>
+              <svg class="w-5 h-5 text-zinc-500 shrink-0 transition-all duration-200 group-hover:text-indigo-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
