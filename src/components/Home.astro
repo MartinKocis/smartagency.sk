@@ -1,0 +1,375 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ui, langs, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const home = langs.find((l) => l.code === lang)!.path;
+const year = new Date().getFullYear();
+
+// Statické farebné triedy (Tailwind v4 negeneruje interpolované názvy)
+const colorMap: Record<string, { hover: string; iconBg: string; iconBorder: string; text: string; big: string }> = {
+  indigo:  { hover: 'hover:border-indigo-500/30',  iconBg: 'bg-indigo-600/15',  iconBorder: 'border-indigo-500/25',  text: 'text-indigo-400',  big: 'text-indigo-900/40' },
+  violet:  { hover: 'hover:border-violet-500/30',  iconBg: 'bg-violet-600/15',  iconBorder: 'border-violet-500/25',  text: 'text-violet-400',  big: 'text-violet-900/40' },
+  emerald: { hover: 'hover:border-emerald-500/30', iconBg: 'bg-emerald-600/15', iconBorder: 'border-emerald-500/25', text: 'text-emerald-400', big: 'text-emerald-900/40' },
+  purple:  { hover: 'hover:border-purple-500/30',  iconBg: 'bg-purple-600/15',  iconBorder: 'border-purple-500/25',  text: 'text-purple-400',  big: 'text-purple-900/40' },
+};
+
+const serviceMeta = [
+  { color: 'indigo',  icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"/>' },
+  { color: 'violet',  icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/>' },
+  { color: 'emerald', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/>' },
+  { color: 'purple',  icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"/>' },
+];
+
+const whoMeta = [
+  { color: 'indigo',  icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/>' },
+  { color: 'violet',  icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.701-.393 2.25-1.016a2.992 2.992 0 002.25 1.016 2.993 2.993 0 003.75.615m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z"/>' },
+  { color: 'emerald', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 9v7.5m-9-6h.008v.008H12V13.5zm0 3h.008v.008H12v-.008zm0 3h.008v.008H12v-.008zm-3-6h.008v.008H9V13.5zm0 3h.008v.008H9v-.008zm0 3h.008v.008H9v-.008zm6-6h.008v.008h-.008V13.5zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/>' },
+];
+
+const stepMeta = [{ n: '01', c: 'indigo' }, { n: '02', c: 'violet' }, { n: '03', c: 'purple' }, { n: '04', c: 'emerald' }];
+
+const projectMeta = [
+  { img: '/portfolio/kadernictvomi.png', name: 'Capillus kaderníctvo', url: 'https://kadernictvomi.sk' },
+  { img: '/portfolio/rozbitymobil.png', name: 'Rozbitý mobil', url: 'https://rozbitymobil.sk' },
+  { img: '/portfolio/cistyinterier.png', name: 'Čistý interiér', url: 'https://cistyinterier.sk' },
+  { img: '/portfolio/lekaren.png', name: 'Medical Center Pharmacy', url: 'https://lekarensecovce.sk' },
+  { img: '/portfolio/kocisfilm.png', name: 'Kocis Film', url: 'https://kocisfilm.sk' },
+  { img: '/portfolio/rancukosta.png', name: 'Ranč u Kosťa', url: 'https://rancukosta.sk' },
+];
+---
+<Layout lang={lang} title={t.meta.title} description={t.meta.description}>
+
+  <!-- FLOATING NAV -->
+  <nav class="fixed top-4 left-4 right-4 z-50 rounded-2xl border border-white/8 bg-[#030712]/70 backdrop-blur-2xl">
+    <div class="max-w-6xl mx-auto px-5 h-14 flex items-center justify-between gap-3">
+      <a href={home} class="font-black text-lg tracking-tight cursor-pointer shrink-0">
+        Smart<span class="text-indigo-400">Agency</span><span class="text-indigo-400">.</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7 text-sm text-zinc-400">
+        <a href="#sluzby" class="hover:text-white transition-colors duration-200 cursor-pointer">{t.nav.services}</a>
+        <a href="#cena" class="hover:text-white transition-colors duration-200 cursor-pointer">{t.nav.price}</a>
+        <a href="#ako-to-funguje" class="hover:text-white transition-colors duration-200 cursor-pointer">{t.nav.how}</a>
+        <a href="#referencie" class="hover:text-white transition-colors duration-200 cursor-pointer">{t.nav.refs}</a>
+        <a href="#faq" class="hover:text-white transition-colors duration-200 cursor-pointer">{t.nav.faq}</a>
+      </div>
+      <div class="flex items-center gap-3 shrink-0">
+        <div class="flex items-center gap-1.5 text-xs font-bold">
+          {langs.map((l) => (
+            <a href={l.path} class={l.code === lang ? 'text-white' : 'text-zinc-500 hover:text-white transition-colors duration-200'}>{l.label}</a>
+          ))}
+        </div>
+        <a href="#kontakt" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-all duration-200 cursor-pointer shadow-lg shadow-indigo-900/40 whitespace-nowrap">
+          {t.nav.cta}
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative min-h-screen flex items-center overflow-hidden pt-24">
+    <div class="blob w-[600px] h-[600px] bg-indigo-600 top-[-150px] right-[-200px]" style="animation-duration:10s"></div>
+    <div class="blob w-[450px] h-[450px] bg-violet-700 bottom-[-120px] left-[-120px]" style="animation-duration:13s;animation-delay:4s"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image:linear-gradient(white 1px,transparent 1px),linear-gradient(90deg,white 1px,transparent 1px);background-size:72px 72px"></div>
+
+    <div class="relative max-w-5xl mx-auto px-6 py-32 text-center">
+      <div class="inline-flex items-center gap-2 border border-indigo-500/25 bg-indigo-500/8 rounded-full px-4 py-1.5 text-xs font-semibold text-indigo-300 mb-10">
+        <span class="relative flex w-2 h-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-60"></span>
+          <span class="relative inline-flex w-2 h-2 rounded-full bg-indigo-400"></span>
+        </span>
+        {t.hero.badge}
+      </div>
+
+      <h1 class="font-black leading-[0.95] tracking-[-0.03em] mb-6" style="font-size:clamp(2.8rem,7.5vw,7rem)" set:html={t.hero.h1}></h1>
+
+      <p class="text-zinc-300 text-xl md:text-2xl max-w-2xl mx-auto mb-4 leading-relaxed" style="font-weight:500" set:html={t.hero.sub1}></p>
+      <p class="text-zinc-500 text-base mb-12" set:html={t.hero.sub2}></p>
+
+      <div class="flex flex-wrap justify-center gap-4 mb-6">
+        <a href="#kontakt" class="group bg-indigo-600 hover:bg-indigo-500 text-white font-black px-10 py-5 rounded-2xl transition-all duration-200 shadow-xl shadow-indigo-900/50 cursor-pointer text-xl">
+          {t.hero.ctaPrimary}
+          <span class="inline-block transition-transform duration-200 group-hover:translate-x-1"> →</span>
+        </a>
+        <a href="#referencie" class="border border-white/15 text-zinc-200 hover:bg-white/5 hover:text-white font-bold px-10 py-5 rounded-2xl transition-all duration-200 cursor-pointer text-xl">
+          {t.hero.ctaSecondary}
+        </a>
+      </div>
+      <p class="text-zinc-600 text-sm">{t.hero.micro}</p>
+
+      <div class="mt-16 flex flex-wrap justify-center gap-0 border border-white/8 rounded-2xl overflow-hidden bg-white/[0.02] max-w-2xl mx-auto">
+        {t.hero.stats.map((s, i) => (
+          <div class={`flex-1 min-w-[140px] px-6 py-5 text-center ${i < 2 ? 'border-r border-white/8' : ''}`}>
+            <div class="font-black text-2xl text-white tracking-tight">{s.n}</div>
+            <div class="text-zinc-500 text-xs mt-1 font-medium">{s.l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SLUŽBY -->
+  <section id="sluzby" class="py-32 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-4">{t.services.eyebrow}</p>
+        <h2 class="font-black leading-[1.05] tracking-[-0.03em] mb-5" style="font-size:clamp(2rem,5vw,4rem)" set:html={t.services.h2}></h2>
+        <p class="text-zinc-400 text-lg max-w-xl mx-auto">{t.services.sub}</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {t.services.items.map((item, i) => (
+          <div class={`bg-zinc-900/40 border border-white/6 rounded-3xl p-8 ${colorMap[serviceMeta[i].color].hover} transition-all duration-200`}>
+            <div class={`w-12 h-12 rounded-2xl ${colorMap[serviceMeta[i].color].iconBg} border ${colorMap[serviceMeta[i].color].iconBorder} flex items-center justify-center mb-5`}>
+              <svg class={`w-6 h-6 ${colorMap[serviceMeta[i].color].text}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" set:html={serviceMeta[i].icon}></svg>
+            </div>
+            <h3 class="font-black text-xl tracking-tight text-white mb-2">{item.title}</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <a href="#kontakt" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-2xl transition-all duration-200 cursor-pointer text-lg shadow-lg shadow-indigo-900/40">
+          {t.services.cta}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRE KOHO -->
+  <section id="pre-koho" class="py-32 border-t border-white/5">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-4">{t.forWho.eyebrow}</p>
+        <h2 class="font-black leading-[1.05] tracking-[-0.03em]" style="font-size:clamp(2rem,5vw,4rem)">{t.forWho.h2}</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5 mb-12">
+        {t.forWho.cards.map((card, i) => (
+          <div class={`bg-zinc-900/40 border border-white/6 rounded-3xl p-8 ${colorMap[whoMeta[i].color].hover} transition-all duration-200`}>
+            <div class={`w-12 h-12 rounded-2xl ${colorMap[whoMeta[i].color].iconBg} border ${colorMap[whoMeta[i].color].iconBorder} flex items-center justify-center mb-5`}>
+              <svg class={`w-6 h-6 ${colorMap[whoMeta[i].color].text}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" set:html={whoMeta[i].icon}></svg>
+            </div>
+            <div class={`text-[10px] font-black ${colorMap[whoMeta[i].color].text} uppercase tracking-[0.18em] mb-2`}>{card.who}</div>
+            <p class="text-zinc-400 text-sm leading-relaxed mb-4">"{card.what}"</p>
+            <div class="border-t border-white/6 pt-4">
+              <p class="text-zinc-300 text-sm font-semibold leading-relaxed">
+                <span class={colorMap[whoMeta[i].color].text}>→ </span>{card.want}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="text-center">
+        <a href="#kontakt" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-2xl transition-all duration-200 cursor-pointer text-lg shadow-lg shadow-indigo-900/40">
+          {t.forWho.cta}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CENA -->
+  <section id="cena" class="py-32 border-t border-white/5">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-4">{t.price.eyebrow}</p>
+        <h2 class="font-black leading-[1.05] tracking-[-0.03em] mb-5" style="font-size:clamp(2rem,5vw,4rem)" set:html={t.price.h2}></h2>
+        <p class="text-zinc-400 text-lg max-w-xl mx-auto">{t.price.sub}</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mb-12">
+        <div class="bg-zinc-900/40 border border-white/6 rounded-3xl p-8 card-glow flex flex-col">
+          <div class="text-[10px] font-black text-zinc-400 uppercase tracking-[0.18em] mb-2">{t.price.basic.label}</div>
+          <h3 class="font-black text-2xl text-white mb-1 tracking-tight">{t.price.basic.title}</h3>
+          <p class="text-zinc-400 text-sm mb-4">{t.price.basic.desc}</p>
+          <div class="font-black text-4xl text-white tracking-tight mb-6">{t.price.basic.from}</div>
+          <ul class="space-y-3 text-sm text-zinc-300 mb-8 flex-1">
+            {t.price.basic.items.map((i) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                {i}
+              </li>
+            ))}
+          </ul>
+          <a href="#kontakt" class="block text-center bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-4 rounded-2xl transition-all duration-200 cursor-pointer">{t.price.basic.cta}</a>
+        </div>
+        <div class="bg-gradient-to-b from-indigo-900/50 to-violet-900/30 border border-indigo-500/25 rounded-3xl p-8 card-glow flex flex-col relative">
+          <div class="absolute -top-3 left-8 bg-indigo-600 text-white text-[10px] font-black px-3 py-1 rounded-full tracking-wider uppercase shadow-lg shadow-indigo-900/50">{t.price.full.badge}</div>
+          <div class="text-[10px] font-black text-indigo-300 uppercase tracking-[0.18em] mb-2">{t.price.full.label}</div>
+          <h3 class="font-black text-2xl text-white mb-1 tracking-tight">{t.price.full.title}</h3>
+          <p class="text-zinc-400 text-sm mb-4">{t.price.full.desc}</p>
+          <div class="font-black text-4xl text-white tracking-tight mb-6">{t.price.full.from}</div>
+          <ul class="space-y-3 text-sm text-zinc-300 mb-8 flex-1">
+            {t.price.full.items.map((i) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-violet-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                {i}
+              </li>
+            ))}
+          </ul>
+          <a href="#kontakt" class="block text-center bg-white text-zinc-900 hover:bg-zinc-100 font-black py-4 rounded-2xl transition-all duration-200 cursor-pointer">{t.price.full.cta}</a>
+        </div>
+      </div>
+      <p class="text-center text-zinc-500 text-sm">{t.price.note}</p>
+    </div>
+  </section>
+
+  <!-- AKO TO FUNGUJE -->
+  <section id="ako-to-funguje" class="py-32 border-t border-white/5 overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-4">{t.how.eyebrow}</p>
+        <h2 class="font-black leading-[1.05] tracking-[-0.03em]" style="font-size:clamp(2rem,5vw,4rem)" set:html={t.how.h2}></h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4 mb-12">
+        {t.how.steps.map((step, i) => (
+          <div class={`group relative bg-zinc-900/40 border border-white/6 rounded-3xl p-8 ${colorMap[stepMeta[i].c].hover} transition-all duration-200 overflow-hidden`}>
+            <div class={`absolute -top-6 -right-4 font-black text-[8rem] ${colorMap[stepMeta[i].c].big} leading-none select-none`} aria-hidden="true">{stepMeta[i].n}</div>
+            <div class="relative">
+              <div class={`text-[10px] font-black ${colorMap[stepMeta[i].c].text} uppercase tracking-[0.18em] mb-3`}>{t.how.stepLabel} {stepMeta[i].n}</div>
+              <h3 class="font-black text-xl tracking-tight text-white mb-3">{step.t}</h3>
+              <p class="text-zinc-400 text-sm leading-relaxed">{step.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="text-center">
+        <a href="#kontakt" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-2xl transition-all duration-200 cursor-pointer text-lg shadow-lg shadow-indigo-900/40">
+          {t.how.cta}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY -->
+  <section class="py-32 border-t border-white/5">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-4">{t.caseStudy.eyebrow}</p>
+        <h2 class="font-black leading-[1.05] tracking-[-0.03em]" style="font-size:clamp(2rem,5vw,4rem)" set:html={t.caseStudy.h2}></h2>
+      </div>
+      <div class="bg-gradient-to-br from-indigo-950/70 to-violet-950/50 border border-indigo-500/20 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+        <div class="blob w-80 h-80 bg-indigo-700 top-[-60px] right-[-60px]" style="animation-duration:11s;opacity:0.1"></div>
+        <div class="relative grid md:grid-cols-2 gap-10 items-start">
+          <div>
+            <div class="inline-flex items-center gap-2 bg-white/6 border border-white/10 rounded-full px-3 py-1 text-xs text-zinc-400 font-medium mb-6">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              {t.caseStudy.badge}
+            </div>
+            <h3 class="font-black text-3xl tracking-tight text-white mb-4 leading-tight">{t.caseStudy.title}</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed mb-6">{t.caseStudy.para}</p>
+            <div class="grid grid-cols-2 gap-3">
+              {t.caseStudy.stats.map((s) => (
+                <div class="bg-white/5 border border-white/8 rounded-2xl p-4">
+                  <div class="font-black text-white text-sm tracking-tight">{s.n}</div>
+                  <div class="text-zinc-500 text-xs mt-0.5 font-medium">{s.l}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="space-y-3">
+            <p class="text-xs font-black text-zinc-500 uppercase tracking-[0.15em] mb-4">{t.caseStudy.gotLabel}</p>
+            {t.caseStudy.got.map((f) => (
+              <div class="flex items-center gap-3 text-sm text-zinc-300 bg-white/[0.03] border border-white/6 rounded-xl px-4 py-3">
+                <div class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center shrink-0">
+                  <svg class="w-3 h-3 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                {f}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENCIE -->
+  <section id="referencie" class="py-32 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-4">{t.refs.eyebrow}</p>
+        <h2 class="font-black leading-[1.05] tracking-[-0.03em] mb-5" style="font-size:clamp(2rem,5vw,4rem)" set:html={t.refs.h2}></h2>
+        <p class="text-zinc-400 text-lg max-w-xl mx-auto">{t.refs.sub}</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {projectMeta.map((p, i) => (
+          <a href={p.url} target="_blank" rel="noopener" class="group bg-zinc-900/40 border border-white/6 rounded-3xl overflow-hidden hover:border-indigo-500/40 transition-all duration-200 cursor-pointer flex flex-col">
+            <div class="relative overflow-hidden aspect-[16/10] border-b border-white/6">
+              <img src={p.img} alt={`Náhľad webu ${p.name}`} loading="lazy" width="1280" height="800" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.04]" />
+            </div>
+            <div class="p-6 flex items-center justify-between gap-4">
+              <div>
+                <div class="text-[10px] font-black text-indigo-400 uppercase tracking-[0.15em] mb-1.5">{t.refs.cats[i]}</div>
+                <h3 class="font-black text-lg text-white tracking-tight">{p.name}</h3>
+              </div>
+              <svg class="w-5 h-5 text-zinc-500 shrink-0 transition-all duration-200 group-hover:text-indigo-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-32 border-t border-white/5">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-4">{t.faq.eyebrow}</p>
+        <h2 class="font-black leading-[1.05] tracking-[-0.03em]" style="font-size:clamp(2rem,5vw,4rem)">{t.faq.h2}</h2>
+      </div>
+      <div class="space-y-4">
+        {t.faq.items.map((item) => (
+          <details class="group bg-zinc-900/40 border border-white/6 rounded-2xl overflow-hidden cursor-pointer hover:border-indigo-500/25 transition-colors duration-200">
+            <summary class="flex items-center justify-between p-6 font-bold text-white text-lg list-none cursor-pointer">
+              {item.q}
+              <svg class="w-5 h-5 text-zinc-500 shrink-0 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="px-6 pb-6 text-zinc-400 text-sm leading-relaxed border-t border-white/5 pt-4">{item.a}</div>
+          </details>
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <p class="text-zinc-500 mb-4">{t.faq.moreQ}</p>
+        <a href="#kontakt" class="inline-flex items-center gap-2 border border-white/15 text-zinc-300 hover:bg-white/5 hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 cursor-pointer">
+          {t.faq.moreCta}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section id="kontakt" class="py-32 border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="relative bg-gradient-to-br from-indigo-950/90 to-violet-950/70 border border-indigo-500/20 rounded-3xl p-12 md:p-20 text-center overflow-hidden">
+        <div class="blob w-[350px] h-[350px] bg-indigo-600 top-[-80px] right-[-80px]" style="animation-duration:9s;opacity:0.1"></div>
+        <div class="blob w-[250px] h-[250px] bg-violet-700 bottom-[-60px] left-[-40px]" style="animation-duration:12s;animation-delay:3s;opacity:0.08"></div>
+        <div class="relative">
+          <p class="text-xs font-black text-indigo-400 tracking-[0.2em] uppercase mb-6">{t.contact.eyebrow}</p>
+          <h2 class="font-black leading-[1.0] tracking-[-0.04em] text-white mb-4" style="font-size:clamp(2.5rem,6vw,5.5rem)">{t.contact.h2}</h2>
+          <p class="text-zinc-400 text-lg md:text-xl mb-3 max-w-lg mx-auto leading-relaxed">{t.contact.sub1}</p>
+          <p class="text-zinc-500 text-sm mb-10">{t.contact.sub2}</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="mailto:kontakt@martinbuilds.eu" class="inline-flex items-center gap-3 bg-white text-zinc-900 hover:bg-zinc-100 font-black px-10 py-5 rounded-2xl transition-all duration-200 cursor-pointer text-lg shadow-2xl shadow-indigo-900/50">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              {t.contact.emailBtn}
+            </a>
+            <a href="https://wa.me/421940970273" class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white font-black px-10 py-5 rounded-2xl transition-all duration-200 cursor-pointer text-lg">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+          <p class="text-zinc-600 text-sm mt-8 font-medium">{t.contact.micro}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 py-10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-600">
+      <span class="font-black text-zinc-400">Smart<span class="text-indigo-500">Agency</span><span class="text-indigo-500">.</span></span>
+      <span>© {year} · {t.footer.made}</span>
+      <a href="mailto:kontakt@martinbuilds.eu" class="hover:text-zinc-400 transition-colors duration-200 cursor-pointer">kontakt@martinbuilds.eu</a>
+    </div>
+  </footer>
+
+</Layout>

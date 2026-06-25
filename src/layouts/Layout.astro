@@ -1,16 +1,23 @@
 ---
 import '../styles/global.css';
-export interface Props { title?: string; description?: string; }
-const { title = 'Smart Agency — Weby, e-shopy a aplikácie na mieru', description = 'Staviam weby, e-shopy a aplikácie s AI. Bezplatná klikateľná ukážka do 24 hodín. Pre firmy a podnikateľov na Slovensku.' } = Astro.props;
+import { langs, type Lang } from '../i18n';
+export interface Props { title?: string; description?: string; lang?: Lang; }
+const { title = 'Smart Agency — Weby, e-shopy a aplikácie na mieru', description = 'Staviam weby, e-shopy a aplikácie s AI. Bezplatná klikateľná ukážka do 24 hodín. Pre firmy a podnikateľov na Slovensku.', lang = 'sk' } = Astro.props;
+const htmlLang = lang === 'cz' ? 'cs' : lang;
+const site = 'https://smartagency.sk';
 ---
 <!doctype html>
-<html lang="sk">
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {langs.map((l) => (
+      <link rel="alternate" hreflang={l.code === 'cz' ? 'cs' : l.code} href={site + l.path} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={site + '/'} />
   </head>
   <body class="min-h-screen bg-[#09090b] text-white overflow-x-hidden">
     <slot />
